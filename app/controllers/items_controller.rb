@@ -5,7 +5,8 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
 
-    render json: @items
+    render json: @items.as_json(include: {reviews: {only:
+    [:id, :title, :content, :rating]}})
   end
 
   # GET /items/1
